@@ -1,0 +1,32 @@
+<div class="container" my-5>
+    <h1>Invoices</h1>
+
+    <table class="table" *ngIf="invoices && invoices.length > 0">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>costumer name</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>amount</th>
+                <th>issue Date</th>
+                <th>status</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invoice of invoices">
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.customerName }}</td>
+                <td>{{ invoice.email }}</td>
+                <td>{{ invoice.phone }}</td>
+                <td>{{ invoice.amount }}</td>
+                <td>{{ invoice.issueDate | date:'medium'}}</td>
+                <td>{{ invoice.status }}</td>
+                <td><a [routerLink]="['/invoices', 'edit', invoice.id]">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p *ngIf="!invoices || invoices.length <= 0"> no invoices found</p>
+</div>
